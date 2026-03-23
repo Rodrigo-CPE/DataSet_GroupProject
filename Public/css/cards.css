@@ -45,3 +45,13 @@
 canvas {
     max-height: 280px;
 }
+
+
+/* Usar na descrição dos cards */
+
+.card-desc {
+    font-size: 12px;
+    color: var(--color-grey-medium);
+    margin-top: 8px;
+    opacity: 0.75;
+}
