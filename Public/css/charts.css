@@ -1,9 +1,24 @@
 /* charts.css */
 .charts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste automático */
+    grid-template-columns: repeat(auto-fit, minmax(580px, 1fr)); /* Ajuste automático */
     gap: 25px;
 }
+/* CONTENEDOR DE CHARTS */
+.charts-div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px; /* espacio entre chart-box */
+    padding: 20px;
+}
+
+.chart-box .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 por fila */
+    gap: 15px;
+    margin-top: 15px;
+}
+
 
 .chart-box {
     background: linear-gradient(135deg, #0B1748, #131F5F);
