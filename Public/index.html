@@ -18,13 +18,13 @@
 
 <ul class="menu">
 
-<li><i class="fa-solid fa-bars-staggered"></i> <span>Overview</span></li>
-<li><i class="fa-solid fa-arrow-trend-up"></i> <span>Tech Trends</span></li>
-<li><i class="fa-solid fa-briefcase"></i> <span>Career Paths</span></li>
-<li><i class="fa-solid fa-robot"></i> <span>AI & Tools</span></li>
-<li><i class="fa-solid fa-graduation-cap"></i> <span>Learning</span></li>
-<li><i class="fa-solid fa-dollar-sign"></i> <span>Salary Explorer</span></li>
-<li><i class="fa-solid fa-user-group"></i> <span>Demographics</span></li>
+<li class="active" data-section="overview" onclick="setActive(this); location.href='/developer'"><i class="fa-solid fa-bars-staggered"></i> <span>Overview</span></li>
+<li data-section="tech-trends" onclick="setActive(this); location.href='/developer/tech-trends'"><i class="fa-solid fa-arrow-trend-up"></i> <span>Tech Trends</span></li>
+<li data-section="career-paths" onclick="setActive(this); location.href='/developer/career-paths'"><i class="fa-solid fa-briefcase"></i> <span>Career Paths</span></li>
+<li data-section="ai-tools" onclick="setActive(this); location.href='/developer/ai-tools'"><i class="fa-solid fa-robot"></i> <span>AI & Tools</span></li>
+<li data-section="learning" onclick="setActive(this); location.href='/developer/learning'"><i class="fa-solid fa-graduation-cap"></i> <span>Learning</span></li>
+<li data-section="salary-explorer" onclick="setActive(this); location.href='/developer/salary-explorer'"><i class="fa-solid fa-dollar-sign"></i> <span>Salary Explorer</span></li>
+<li data-section="demographics" onclick="setActive(this); location.href='/developer/demographics'"><i class="fa-solid fa-user-group"></i> <span>Demographics</span></li>
 
 </ul>
 
