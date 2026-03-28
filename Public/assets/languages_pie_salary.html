@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div id="chart" style="width:100%;height:100%;"></div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        const data = [{
+            labels: ['Rust', 'Python', 'Go', 'C++', 'TypeScript', 'C#', 'JavaScript', 'Java', 'Kotlin', 'Swift'],
+            values: [152000, 145000, 142000, 138000, 135000, 130000, 128000, 125000, 122000, 118000],
+            type: 'pie',
+            marker: {
+                colors: ['#8b5cf6', '#7c3aed', '#6d28d9', '#5b21b6', '#4c1d95', '#581c87', '#6d1b69', '#7e1b5b', '#8f1d4d', '#9f1f3f'],
+                line: { color: '#ffffff', width: 2 }
+            },
+            textinfo: 'label+value',
+            texttemplate: '<b>%{label}</b><br>€%{value:,.0f}',
+            textfont: { size: 12, color: '#1e293b' },
+            hovertemplate: '<b>%{label}</b><br>Salário: €%{value:,.0f}<extra></extra>'
+        }];
+
+        const layout = {
+            title: {
+                text: '<b>Linguagens Melhor Pagas</b>',
+                font: { size: 18, color: '#1f2937', family: 'Segoe UI, sans-serif' },
+                x: 0,
+                xanchor: 'left'
+            },
+            paper_bgcolor: '#ffffff',
+            showlegend: true,
+            height: 550,
+            margin: { l: 20, r: 20, t: 80, b: 20 }
+        };
+
+        Plotly.newPlot('chart', data, layout, {responsive: true, displayModeBar: false});
+    </script>
+</body>
+</html>

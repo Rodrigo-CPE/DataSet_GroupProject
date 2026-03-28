@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuição Geracional</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f7fa;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .chart-wrapper {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart {
+            min-height: 400px;
+            pointer-events: none;
+        }
+
+        .insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-left: 5px solid #3b82f6;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+        }
+
+        .insight-box:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .insight-box h3 {
+            color: #0369a1;
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 11px;
+            letter-spacing: 0.3px;
+        }
+
+        .insight-box p {
+            color: #1a1a1a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .stat-highlight {
+            background: white;
+            color: #3b82f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Distribuição Geracional dos Programadores</h1>
+            <p>Análise de 65.437 programadores por faixa etária/geração em 186 países</p>
+        </div>
+
+        <div class="chart-wrapper">
+            <div class="chart" id="chart1"></div>
+        </div>
+
+        <div class="insights">
+            <div class="insight-box">
+                <h3>Millennials Dominam</h3>
+                <p><span class="stat-highlight">36.5%</span> dos programadores são Millennials, o maior grupo demográfico na comunidade global de desenvolvimento.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Transição Geracional</h3>
+                <p><span class="stat-highlight">22.8%</span> identificam-se como Millennials/Gen X, refletindo a transição entre gerações nas carreiras tech.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Gen Z em Crescimento</h3>
+                <p><span class="stat-highlight">21.5%</span> é Gen Z, representando a geração mais jovem de programadores em ascensão rápida.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Representação Gen X</h3>
+                <p><span class="stat-highlight">9.5%</span> é Gen X tradicional, menor percentual mas ainda significativo na força de trabalho.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Boomers & Gen Alpha</h3>
+                <p>Boomers e Gen Alpha combinam <span class="stat-highlight">7.8%</span>, refletindo ambas as extremidades do espectro geracional.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Implicações para Recrutamento</h3>
+                <p>Com Millennials e Gen Z combinados em <span class="stat-highlight">58%</span>, estratégias de recrutamento focadas nessas gerações são críticas.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart: Generational Distribution (Horizontal Bar)
+        const generations = ['Millennials', 'Millennials/Gen X', 'Gen Z', 'Gen X', 'Boomers', 'Gen Alpha', 'Geração Silenciosa'];
+        const genValues = [23911, 14942, 14098, 6249, 2575, 2568, 772];
+        const genTotal = genValues.reduce((a,b) => a+b);
+
+        const trace1 = {
+            y: generations,
+            x: genValues,
+            type: 'bar',
+            orientation: 'h',
+            marker: { 
+                color: genValues,
+                colorscale: [[0, '#10b981'], [1, '#3b82f6']],
+                showscale: false
+            },
+            text: genValues.map((v) => ((v/genTotal)*100).toFixed(1) + '%'),
+            textposition: 'outside',
+            hovertemplate: '<b>%{y}</b><br>%{x:,} programadores (%{text})<extra></extra>'
+        };
+
+        const layout1 = {
+            title: '',
+            xaxis: { title: 'Número de Programadores' },
+            yaxis: { autorange: 'reversed' },
+            height: 500,
+            margin: { l: 150, r: 130, t: 10, b: 60 },
+            plot_bgcolor: '#fafafa',
+            font: { family: 'system-ui', size: 10 }
+        };
+
+        Plotly.newPlot('chart1', [trace1], layout1, { staticPlot: true, displayModeBar: false });
+    </script>
+</body>
+</html>

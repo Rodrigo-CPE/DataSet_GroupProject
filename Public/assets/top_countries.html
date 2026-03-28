@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Top 10 Countries</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            width: 100%;
+            margin: 0;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 20px 0;
+            text-align: left;
+        }
+        
+        #chart {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Top 10 Países por Respondentes</h1>
+        <div id="chart"></div>
+    </div>
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        const countriesData = [
+            { country: 'United States of America', count: 11095 },
+            { country: 'India', count: 4231 },
+            { country: 'Germany', count: 4947 },
+            { country: 'United Kingdom of Great Britain and Northern Ireland', count: 3224 },
+            { country: 'Ukraine', count: 2672 },
+            { country: 'France', count: 2110 },
+            { country: 'Canada', count: 2104 },
+            { country: 'Poland', count: 1534 },
+            { country: 'Netherlands', count: 1449 },
+            { country: 'Brazil', count: 1200 }
+        ];
+
+        // Sort by descending count
+        countriesData.sort((a, b) => b.count - a.count);
+
+        // Simplify country names for display
+        const labels = countriesData.map(d => {
+            let name = d.country;
+            if (name === 'United States of America') return 'United States';
+            if (name.includes('United Kingdom')) return 'United Kingdom';
+            return name;
+        });
+
+        const values = countriesData.map(d => d.count);
+
+        const data = [{
+            y: labels,
+            x: values,
+            type: 'bar',
+            orientation: 'h',
+            marker: {
+                color: '#22c55e',
+                line: { color: '#22c55e', width: 0 }
+            },
+            text: values.map(v => v.toLocaleString()),
+            textposition: 'outside',
+            textfont: { size: 11, color: '#374151', family: 'Segoe UI, sans-serif' },
+            hovertemplate: '<b>%{y}</b><br>%{x:,} respondentes<extra></extra>'
+        }];
+
+        const layout = {
+            title: '',
+            paper_bgcolor: '#ffffff',
+            plot_bgcolor: '#ffffff',
+            showlegend: false,
+            height: 500,
+            font: { family: 'Segoe UI, sans-serif', size: 13, color: '#6b7280' },
+            margin: { l: 300, r: 100, t: 10, b: 50 },
+            xaxis: {
+                showgrid: true,
+                gridwidth: 1,
+                gridcolor: '#e5e7eb',
+                zeroline: false
+            },
+            yaxis: {
+                autorange: 'reversed'
+            }
+        };
+
+        Plotly.newPlot('chart', data, layout, { responsive: true, displayModeBar: false });
+        
+        window.addEventListener('resize', () => {
+            Plotly.Plots.resize('chart');
+        });
+    </script>
+</body>
+</html>

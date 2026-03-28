@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div id="chart" style="width:100%;height:100%;"></div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        const data = [{
+            x: [
+                'Autónomo - Freelancer',
+                '2 a 9 func.',
+                '10 a 19 func.',
+                '20 a 99 func.',
+                '100 a 499 func.',
+                '500 a 999 func.',
+                '1.000 a 4.999 func.',
+                '5.000 a 9.999 func.',
+                '10.000 ou mais func.'
+            ],
+            y: [65000, 75000, 80000, 90000, 100000, 105000, 110000, 115000, 125000],
+            type: 'bar',
+            marker: { color: '#667eea' },
+            text: ['€65k', '€75k', '€80k', '€90k', '€100k', '€105k', '€110k', '€115k', '€125k'],
+            textposition: 'outside',
+            textfont: { size: 11, color: '#1e293b' },
+            hovertemplate: '<b>%{x}</b><br>Salário: €%{y:,.0f}<extra></extra>'
+        }];
+
+        const layout = {
+            title: {
+                text: '<b>Salário Médio por Tamanho da Empresa</b>',
+                font: { size: 18, color: '#1f2937', family: 'Segoe UI, sans-serif' },
+                x: 0,
+                xanchor: 'left'
+            },
+            xaxis: {
+                title: 'Tamanho da Empresa',
+                titlefont: { size: 12, color: '#475569' },
+                tickfont: { size: 11, color: '#64748b' },
+                tickangle: -45,
+                showgrid: true,
+                gridcolor: 'rgba(0,0,0,0.1)',
+                gridwidth: 1,
+                showline: true,
+                linewidth: 2,
+                linecolor: '#1f2937',
+                mirror: true
+            },
+            yaxis: {
+                title: 'Salário Médio (EUR)',
+                titlefont: { size: 12, color: '#475569' },
+                tickfont: { size: 11, color: '#64748b' },
+                showgrid: true,
+                gridcolor: 'rgba(0,0,0,0.1)',
+                gridwidth: 1,
+                showline: true,
+                linewidth: 2,
+                linecolor: '#1f2937',
+                mirror: true
+            },
+            paper_bgcolor: '#ffffff',
+            plot_bgcolor: '#ffffff',
+            width: null,
+            height: 520,
+            margin: { l: 80, r: 40, t: 80, b: 100 }
+        };
+
+        Plotly.newPlot('chart', data, layout, {responsive: true, displayModeBar: false});
+    </script>
+</body>
+</html>

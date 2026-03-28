@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologias que Programadores Desejam Aprender</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #1a1a1a;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        #chart {
+            min-height: 600px;
+        }
+        .legend-info {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .legend-box {
+            width: 24px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .legend-box.learning {
+            background: linear-gradient(90deg, #7c3aed, #3b82f6);
+        }
+        .legend-box.using {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tecnologias que Programadores Desejam Aprender</h1>
+        <p class="subtitle">Comparação entre linguagens de programação: desejo de aprender vs. atualmente a usar</p>
+        <div id="chart"></div>
+        
+        <div class="legend-info">
+            <div class="legend-item">
+                <div class="legend-box learning"></div>
+                <span><strong>Deseja Aprender</strong> - Percentagem de programadores que desejam aprender a tecnologia</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box using"></div>
+                <span><strong>Atualmente a Usar</strong> - Percentagem de programadores que usam atualmente</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados das linguagens de programação (Top 10 por "Currently Using")
+        const data = [
+            { language: 'JavaScript', wantToLearn: 42.64, currentlyUsing: 62.75 },
+            { language: 'HTML/CSS', wantToLearn: 37.17, currentlyUsing: 53.25 },
+            { language: 'Python', wantToLearn: 44.93, currentlyUsing: 51.42 },
+            { language: 'SQL', wantToLearn: 40.18, currentlyUsing: 51.35 },
+            { language: 'TypeScript', wantToLearn: 36.30, currentlyUsing: 38.75 },
+            { language: 'Bash/Shell', wantToLearn: 24.65, currentlyUsing: 34.17 },
+            { language: 'Java', wantToLearn: 19.13, currentlyUsing: 30.53 },
+            { language: 'C#', wantToLearn: 23.18, currentlyUsing: 27.31 },
+            { language: 'C++', wantToLearn: 19.50, currentlyUsing: 23.14 },
+            { language: 'C', wantToLearn: 14.84, currentlyUsing: 20.39 }
+        ];
+
+        // Ordenar por "Currently Using" (descendente)
+        data.sort((a, b) => b.currentlyUsing - a.currentlyUsing);
+
+        // Preparar dados para o Plotly
+        const languages = data.map(d => d.language);
+        const wantToLearn = data.map(d => d.wantToLearn);
+        const currentlyUsing = data.map(d => d.currentlyUsing);
+
+        const trace1 = {
+            y: languages,
+            x: wantToLearn,
+            name: 'Deseja Aprender',
+            type: 'bar',
+            orientation: 'h',
+            marker: {
+                color: 'rgba(124, 58, 237, 0.8)',
+                line: {
+                    color: 'rgba(59, 130, 246, 1)',
+                    width: 1
+                }
+            },
+            text: wantToLearn.map(v => v.toFixed(1) + '%'),
+            textposition: 'auto',
+            hovertemplate: '<b>%{y}</b><br>Deseja Aprender: %{x:.1f}%<extra></extra>'
+        };
+
+        const trace2 = {
+            y: languages,
+            x: currentlyUsing,
+            name: 'Atualmente a Usar',
+            type: 'bar',
+            orientation: 'h',
+            marker: {
+                color: 'rgba(16, 185, 129, 0.8)',
+                line: {
+                    color: 'rgba(5, 150, 105, 1)',
+                    width: 1
+                }
+            },
+            text: currentlyUsing.map(v => v.toFixed(1) + '%'),
+            textposition: 'auto',
+            hovertemplate: '<b>%{y}</b><br>Atualmente a Usar: %{x:.1f}%<extra></extra>'
+        };
+
+        const layout = {
+            barmode: 'group',
+            title: {
+                text: '',
+                x: 0,
+                xanchor: 'left',
+                font: { size: 20, color: '#1a1a1a' }
+            },
+            xaxis: {
+                title: 'Percentagem (%)',
+                gridcolor: '#e0e0e0',
+                zeroline: true,
+                showgrid: true,
+                range: [0, 70]
+            },
+            yaxis: {
+                title: '',
+                autorange: 'reversed'
+            },
+            plot_bgcolor: '#fafafa',
+            paper_bgcolor: 'white',
+            margin: { l: 120, r: 50, t: 20, b: 60 },
+            font: { family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto' },
+            hovermode: 'closest',
+            legend: {
+                x: 1.05,
+                y: 1,
+                xanchor: 'left',
+                yanchor: 'top',
+                bgcolor: 'rgba(255, 255, 255, 0.8)',
+                bordercolor: '#e0e0e0',
+                borderwidth: 1
+            }
+        };
+
+        const config = {
+            responsive: true,
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d']
+        };
+
+        Plotly.newPlot('chart', [trace1, trace2], layout, config);
+
+        // Responsividade
+        window.addEventListener('resize', function() {
+            Plotly.Plots.resize('chart');
+        });
+    </script>
+</body>
+</html>

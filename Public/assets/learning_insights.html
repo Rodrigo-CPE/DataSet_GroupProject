@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Insights Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f7fa;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .insight-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid #3b82f6;
+        }
+
+        .insight-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .insight-card.warning {
+            border-left-color: #f59e0b;
+        }
+
+        .insight-card.success {
+            border-left-color: #10b981;
+        }
+
+        .insight-card.info {
+            border-left-color: #8b5cf6;
+        }
+
+        .insight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .insight-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .insight-card.warning .insight-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .insight-card.success .insight-icon {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .insight-card.info .insight-icon {
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+        }
+
+        .insight-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .insight-subtitle {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .insight-content {
+            margin-bottom: 20px;
+        }
+
+        .insight-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .insight-highlight {
+            background: #f0f9ff;
+            border-left: 3px solid #3b82f6;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 12px;
+        }
+
+        .insight-list {
+            list-style: none;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .insight-list li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .insight-list li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        .insight-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .stat-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .learning-path-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .path-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .path-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .path-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .path-languages {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .lang-tag {
+            display: inline-block;
+            background: white;
+            border: 1px solid #3b82f6;
+            color: #0369a1;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .path-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Learning Insights Hub</h1>
+            <p>Análise baseada em dados reais de 65.437 programadores em 186 países</p>
+        </div>
+
+        <div class="insights-grid">
+            <!-- Insight 1: Language to Career -->
+            <div class="insight-card">
+                <div class="insight-header">
+                    <div class="insight-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div>
+                        <div class="insight-title">Language → Career</div>
+                        <div class="insight-subtitle">Dados do Dataset</div>
+                    </div>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-highlight">JavaScript domina: 35%+ dos programadores têm JS</div>
+                    <ul class="insight-list">
+                        <li><strong>JavaScript</strong> → Full-Stack Dev (maior fluxo)</li>
+                        <li><strong>Python</strong> → Data Science/ML + Back-End</li>
+                        <li><strong>TypeScript</strong> → Full-Stack (tendência crescente)</li>
+                        <li><strong>SQL</strong> → Back-End Dev (fundacional)</li>
+                        <li><strong>HTML/CSS</strong> → Front-End Dev (obrigatório)</li>
+                    </ul>
+                </div>
+                <div class="insight-footer">
+                    <span>Dataset: 65.437 devs</span>
+                    <span class="stat-badge">Crítico</span>
+                </div>
+            </div>
+
+            <!-- Insight 2: Polyglot Pattern -->
+            <div class="insight-card warning">
+                <div class="insight-header">
+                    <div class="insight-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <div class="insight-title">Padrão Poliglota</div>
+                        <div class="insight-subtitle">Realidade do Mercado</div>
+                    </div>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-highlight">Maioria dos devs: 4-5 linguagens simultâneas</div>
+                    <p class="insight-text">Não existe especialista em uma única linguagem bem-sucedido. A verdade do mercado:</p>
+                    <ul class="insight-list">
+                        <li>Nunca és "apenas JavaScript" ou "apenas Python"</li>
+                        <li>Front-Enders precisam: JS + HTML/CSS + 1 framework</li>
+                        <li>Back-Enders precisam: 1 linguagem + SQL + DevOps basics</li>
+                        <li>Full-Stack precisam: 2-3 linguagens + SQL + DevOps</li>
+                    </ul>
+                </div>
+                <div class="insight-footer">
+                    <span>Observação importante</span>
+                    <span class="stat-badge">Alerta</span>
+                </div>
+            </div>
+
+            <!-- Insight 3: Experience vs Salary -->
+            <div class="insight-card success">
+                <div class="insight-header">
+                    <div class="insight-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <div class="insight-title">Experience = Salary</div>
+                        <div class="insight-subtitle">ROI da Aprendizagem</div>
+                    </div>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-highlight">Junior (0-3y): €53k → Senior (21+y): €86k (+62%)</div>
+                    <ul class="insight-list">
+                        <li><strong>Junior (0-3y):</strong> €53k-€59k</li>
+                        <li><strong>Mid (4-8y):</strong> €54k-€68k</li>
+                        <li><strong>Senior (9-12y):</strong> €68k-€81k</li>
+                        <li><strong>Lead (13+y):</strong> €70k-€86k</li>
+                        <li><strong>Mobile Dev (21+y):</strong> €86.949 (pico)</li>
+                    </ul>
+                </div>
+                <div class="insight-footer">
+                    <span>Média global em EUR</span>
+                    <span class="stat-badge">Positivo</span>
+                </div>
+            </div>
+
+            <!-- Insight 4: AI Adoption -->
+            <div class="insight-card info">
+                <div class="insight-header">
+                    <div class="insight-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>
+                        <div class="insight-title">AI Adoption Gap</div>
+                        <div class="insight-subtitle">Geração vs Experiência</div>
+                    </div>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-highlight">Millennials: 58% adoption | Gen Z: 42%</div>
+                    <ul class="insight-list">
+                        <li><strong>Millennials:</strong> 58% (taxa mais alta)</li>
+                        <li><strong>Gen X:</strong> 51% (pragmáticos)</li>
+                        <li><strong>Boomers:</strong> 38% (menos experiência)</li>
+                        <li><strong>Mid-level devs:</strong> 64% (pico absoluto)</li>
+                        <li><strong>Experts (21+y):</strong> 42% (menos hands-on)</li>
+                    </ul>
+                </div>
+                <div class="insight-footer">
+                    <span>Baseado em 65.437 devs</span>
+                    <span class="stat-badge">Oportunidade</span>
+                </div>
+            </div>
+
+            <!-- Insight 5: No Single Path -->
+            <div class="insight-card">
+                <div class="insight-header">
+                    <div class="insight-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div>
+                        <div class="insight-title">Sem Caminho Único</div>
+                        <div class="insight-subtitle">Flexibilidade de Carreira</div>
+                    </div>
+                </div>
+                <div class="insight-content">
+                    <p class="insight-text">Um programador JavaScript pode evoluir para:</p>
+                    <ul class="insight-list">
+                        <li>Full-Stack Developer (caminho mais comum)</li>
+                        <li>Back-End Developer (aprendendo Node.js)</li>
+                        <li>Front-End Specialist (aprofundando React/Vue)</li>
+                        <li>Technical Leader (management track)</li>
+                        <li>DevOps Engineer (aprendendo infraestrutura)</li>
+                    </ul>
+                </div>
+                <div class="insight-footer">
+                    <span>Dados de carreira real</span>
+                    <span class="stat-badge">Reflexão</span>
+                </div>
+            </div>
+
+            <!-- Insight 6: Framework Lock-in -->
+            <div class="insight-card warning">
+                <div class="insight-header">
+                    <div class="insight-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <div class="insight-title">Framework Lock-in Risk</div>
+                        <div class="insight-subtitle">Cuidado com Especialização</div>
+                    </div>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-highlight">Front-End devs focados em 1 framework = menor mobilidade</div>
+                    <p class="insight-text">Padrão observado no dataset:</p>
+                    <ul class="insight-list">
+                        <li>React-only devs: mobilidade média</li>
+                        <li>React + Outros frameworks: mobilidade alta</li>
+                        <li>Full-Stack com múltiplas stacks: mobilidade máxima</li>
+                        <li>Recomendação: aprende framework + conceitos fundamentais</li>
+                    </ul>
+                </div>
+                <div class="insight-footer">
+                    <span>Padrão crítico</span>
+                    <span class="stat-badge">Atenção</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Paths Section -->
+        <div class="learning-path-section">
+            <h2 class="section-title"> Caminhos de Aprendizagem Recomendados</h2>
+            <div class="path-grid">
+                <div class="path-card">
+                    <div class="path-icon">🚀</div>
+                    <div class="path-title">Full-Stack Developer</div>
+                    <div class="path-languages">
+                        <span class="lang-tag">HTML/CSS</span>
+                        <span class="lang-tag">JavaScript</span>
+                        <span class="lang-tag">TypeScript</span>
+                        <span class="lang-tag">SQL</span>
+                        <span class="lang-tag">React/Vue</span>
+                        <span class="lang-tag">Node.js</span>
+                    </div>
+                </div>
+
+                <div class="path-card">
+                    <div class="path-icon">🎨</div>
+                    <div class="path-title">Front-End Specialist</div>
+                    <div class="path-languages">
+                        <span class="lang-tag">HTML/CSS</span>
+                        <span class="lang-tag">JavaScript</span>
+                        <span class="lang-tag">React/Angular/Vue</span>
+                        <span class="lang-tag">TypeScript</span>
+                        <span class="lang-tag">Design Systems</span>
+                    </div>
+                </div>
+
+                <div class="path-card">
+                    <div class="path-icon">⚙️</div>
+                    <div class="path-title">Back-End Developer</div>
+                    <div class="path-languages">
+                        <span class="lang-tag">Python/Java/C#</span>
+                        <span class="lang-tag">SQL/NoSQL</span>
+                        <span class="lang-tag">Express/Django</span>
+                        <span class="lang-tag">APIs REST</span>
+                        <span class="lang-tag">DevOps basics</span>
+                    </div>
+                </div>
+
+                <div class="path-card">
+                    <div class="path-icon">📊</div>
+                    <div class="path-title">Data Scientist</div>
+                    <div class="path-languages">
+                        <span class="lang-tag">Python</span>
+                        <span class="lang-tag">SQL</span>
+                        <span class="lang-tag">Pandas/NumPy</span>
+                        <span class="lang-tag">Scikit-Learn</span>
+                        <span class="lang-tag">Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

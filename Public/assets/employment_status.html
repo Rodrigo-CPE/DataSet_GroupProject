@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Employment Status</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            width: 100%;
+            margin: 0;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 8px 0;
+            text-align: left;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        
+        #chart {
+            width: 100%;
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Estado de Emprego</h1>
+        <p class="subtitle">Distribuição do status de emprego dos programadores</p>
+        <div id="chart"></div>
+    </div>
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        const employmentData = [
+            { label: 'Employed, full-time', value: 59.66 },
+            { label: 'Independent contractor, freelancer, or self-employed', value: 7.41 },
+            { label: 'Student, full-time', value: 7.20 },
+            { label: 'Employed, full-time;Independent contractor, freelancer, or self-employed', value: 5.44 },
+            { label: 'Not employed, but looking for work', value: 3.58 },
+            { label: 'Employed, part-time', value: 3.18 },
+            { label: 'Retired', value: 1.58 }
+        ];
+
+        // Sort by descending value
+        employmentData.sort((a, b) => b.value - a.value);
+
+        const labels = employmentData.map(d => {
+            // Simplify labels for display
+            let label = d.label;
+            if (label.includes('Employed, full-time;Independent')) {
+                label = 'Tempo inteiro + Freelancer';
+            } else if (label === 'Employed, full-time') {
+                label = 'Tempo inteiro';
+            } else if (label === 'Independent contractor, freelancer, or self-employed') {
+                label = 'Freelancer';
+            } else if (label === 'Student, full-time') {
+                label = 'Estudante';
+            } else if (label === 'Not employed, but looking for work') {
+                label = 'À procura de trabalho';
+            } else if (label === 'Employed, part-time') {
+                label = 'Tempo parcial';
+            }
+            return label;
+        });
+
+        const values = employmentData.map(d => d.value);
+
+        const data = [{
+            y: labels,
+            x: values,
+            type: 'bar',
+            orientation: 'h',
+            marker: {
+                color: '#8b5cf6',
+                line: { color: '#8b5cf6', width: 0 }
+            },
+            text: values.map(v => v.toFixed(1) + '%'),
+            textposition: 'outside',
+            textfont: { size: 11, color: '#8b5cf6', family: 'Segoe UI, sans-serif' },
+            hovertemplate: '<b>%{y}</b><br>%{x:.1f}%<extra></extra>'
+        }];
+
+        const layout = {
+            title: '',
+            paper_bgcolor: '#ffffff',
+            plot_bgcolor: '#ffffff',
+            showlegend: false,
+            height: 500,
+            font: { family: 'Segoe UI, sans-serif', size: 11, color: '#1f2937' },
+            margin: { l: 180, r: 100, t: 10, b: 50 },
+            xaxis: {
+                showgrid: true,
+                gridwidth: 1,
+                gridcolor: '#e5e7eb',
+                zeroline: false,
+                range: [0, 70]
+            },
+            yaxis: {
+                autorange: 'reversed'
+            }
+        };
+
+        Plotly.newPlot('chart', data, layout, { staticPlot: false, displayModeBar: false });
+        
+        window.addEventListener('resize', () => {
+            Plotly.Plots.resize('chart');
+        });
+    </script>
+</body>
+</html>

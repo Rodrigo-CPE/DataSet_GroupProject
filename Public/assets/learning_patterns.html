@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Learning Patterns Analysis</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f7fa;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .chart-wrapper {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 3px solid #3b82f6;
+            letter-spacing: 0.3px;
+        }
+
+        .chart {
+            min-height: 400px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-left: 5px solid #3b82f6;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+        }
+
+        .insight-box:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .insight-box h3 {
+            color: #0369a1;
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 11px;
+            letter-spacing: 0.3px;
+        }
+
+        .insight-box p {
+            color: #1a1a1a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .stat-highlight {
+            background: white;
+            color: #3b82f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Análise de Padrões de Aprendizagem de Programadores</h1>
+            <p>Análise profunda de 65.437 programadores: como aprendem, praticam e crescem</p>
+        </div>
+
+        <div class="charts-container">
+            <!-- Chart 1: Coding Activities -->
+            <div class="chart-wrapper">
+                <div class="chart-title">Distribuição de Atividades de Programação</div>
+                <div class="chart" id="chart1"></div>
+            </div>
+
+            <!-- Chart 2: Education Levels -->
+            <div class="chart-wrapper">
+                <div class="chart-title">Formação Educacional</div>
+                <div class="chart" id="chart2"></div>
+            </div>
+
+            <!-- Chart 3: Tech Documentation Usage -->
+            <div class="chart-wrapper full-width">
+                <div class="chart-title">Como os Programadores Acedem à Documentação Técnica</div>
+                <div class="chart" id="chart3"></div>
+            </div>
+
+            <!-- Chart 4: Learning Methods Combinations -->
+            <div class="chart-wrapper full-width">
+                <div class="chart-title">Métodos de Aprendizagem (Top Combinações)</div>
+                <div class="chart" id="chart4"></div>
+            </div>
+        </div>
+
+        <div class="insights">
+            <div class="insight-box">
+                <h3>Descoberta Chave #1</h3>
+                <p><span class="stat-highlight">37%</span> dos programadores combinam <strong>projetos pessoais + desenvolvimento profissional</strong>. A aprendizagem é contínua!</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Descoberta Chave #2</h3>
+                <p><span class="stat-highlight">38%</span> têm licenciaturas, mas <span class="stat-highlight">24%</span> têm mestrados. A educação correlaciona com salários.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Descoberta Chave #3</h3>
+                <p>Millennials dominam com <span class="stat-highlight">36%</span> dos respondentes, seguidos pela Gen Z com <span class="stat-highlight">22%</span>.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Descoberta Chave #4</h3>
+                <p><span class="stat-highlight">27%</span> usam <strong>docs API + README + Google</strong>—a combinação clássica de debugging!</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Descoberta Chave #5</h3>
+                <p>Nenhum método de aprendizagem domina sozinho: <strong>combinações</strong> são a chave. A maioria combina 3-5 métodos simultaneamente.</p>
+            </div>
+
+            <div class="insight-box">
+                <h3>Descoberta Chave #6</h3>
+                <p><strong>A pesquisa de documentação com IA está crescendo!</strong> <span class="stat-highlight">31%</span> agora usam ferramentas alimentadas por IA juntamente com métodos tradicionais.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart 1: Coding Activities (Donut)
+        const activities = ['Hobby', 'Não Codificar Fora do Trabalho', 'Hobby + Dev Profissional', 'Hobby + Open Source', 'Dev Profissional', 'Freelance'];
+        const actValues = [9993, 6508, 6203, 3732, 3120, 2692];
+
+        const trace1 = {
+            labels: activities,
+            values: actValues,
+            type: 'pie',
+            hole: 0.4,
+            marker: { colors: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'] }
+        };
+
+        const layout1 = {
+            title: '',
+            font: { family: 'system-ui', size: 12 },
+            showlegend: true,
+            height: 400,
+            margin: { l: 0, r: 0, t: 0, b: 0 }
+        };
+
+        Plotly.newPlot('chart1', [trace1], layout1, { responsive: true, displayModeBar: false });
+
+        // Chart 2: Education Levels (Bar)
+        const edLevels = ['Licenciatura', 'Mestrado', 'Alguns Estudos', 'Ensino Secundário', 'Grau Profissional', 'Diploma Técnico', 'Ensino Primário'];
+        const edValues = [24942, 15557, 7651, 5793, 2970, 1793, 1146];
+
+        const trace2 = {
+            x: edLevels,
+            y: edValues,
+            type: 'bar',
+            marker: { color: '#3b82f6', line: { color: '#1e40af', width: 1 } },
+            text: edValues.map(v => v.toLocaleString('pt-PT')),
+            textposition: 'auto',
+            hovertemplate: '<b>%{x}</b><br>%{y:,}<extra></extra>'
+        };
+
+        const layout2 = {
+            title: '',
+            xaxis: { tickangle: -45 },
+            yaxis: { title: 'Quantidade' },
+            height: 400,
+            margin: { l: 60, r: 20, t: 20, b: 80 },
+            plot_bgcolor: '#fafafa',
+            font: { family: 'system-ui', size: 11 }
+        };
+
+        Plotly.newPlot('chart2', [trace2], layout2, { responsive: true, displayModeBar: false });
+
+        // Chart 3: Tech Doc Usage (Horizontal Bar - Top 8)
+        const docMethods = [
+            'Docs API + README + Google',
+            'Docs API + README + Google + KB',
+            'Docs API + README',
+            'Docs API + README + Google + IA (grátis)',
+            'Docs API + README + KB + Google + IA',
+            'Docs API + Google',
+            'Docs API + README + KB',
+            'Apenas Docs API'
+        ];
+        const docValues = [6947, 5446, 4251, 3079, 2561, 1923, 1580, 1559];
+
+        const trace3 = {
+            y: docMethods,
+            x: docValues,
+            type: 'bar',
+            orientation: 'h',
+            marker: { color: '#8b5cf6', line: { color: '#6d28d9', width: 1 } },
+            text: docValues.map(v => v.toLocaleString('pt-PT')),
+            textposition: 'auto',
+            hovertemplate: '<b>%{y}</b><br>%{x:,} programadores<extra></extra>'
+        };
+
+        const layout3 = {
+            title: '',
+            xaxis: { title: 'Programadores' },
+            height: 350,
+            margin: { l: 350, r: 60, t: 20, b: 60 },
+            plot_bgcolor: '#fafafa',
+            font: { family: 'system-ui', size: 10 }
+        };
+
+        Plotly.newPlot('chart3', [trace3], layout3, { responsive: true, displayModeBar: false });
+
+        // Chart 4: Learning Methods (Horizontal Bar - Top 8)
+        const learnMethods = [
+            'Recursos Online (blogs, fóruns)',
+            'Livros + Recursos Online',
+            'Online + Escola',
+            'Livros + Online + Cursos',
+            'Online + Cursos',
+            'Livros + Online + Escola',
+            'Livros + Training + Online + Escola',
+            'Todos os Métodos Combinados'
+        ];
+        const learnValues = [3674, 2493, 2362, 2286, 2182, 1925, 1879, 1629];
+
+        const trace4 = {
+            y: learnMethods,
+            x: learnValues,
+            type: 'bar',
+            orientation: 'h',
+            marker: { color: '#f59e0b', line: { color: '#d97706', width: 1 } },
+            text: learnValues.map(v => v.toLocaleString('pt-PT')),
+            textposition: 'auto',
+            hovertemplate: '<b>%{y}</b><br>%{x:,} programadores<extra></extra>'
+        };
+
+        const layout4 = {
+            title: '',
+            xaxis: { title: 'Número de Programadores' },
+            height: 350,
+            margin: { l: 380, r: 60, t: 20, b: 60 },
+            plot_bgcolor: '#fafafa',
+            font: { family: 'system-ui', size: 10 }
+        };
+
+        Plotly.newPlot('chart4', [trace4], layout4, { responsive: true, displayModeBar: false });
+
+        // Responsive
+        window.addEventListener('resize', () => {
+            Plotly.Plots.resize('chart1');
+            Plotly.Plots.resize('chart2');
+            Plotly.Plots.resize('chart3');
+            Plotly.Plots.resize('chart4');
+        });
+    </script>
+</body>
+</html>
