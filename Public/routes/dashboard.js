@@ -4,6 +4,7 @@ const router  = express.Router();
 
 const views = path.join(__dirname, '..', 'views');
 
+/* Parte do Engenheiro Informático */
 router.get('/',                (req, res) => res.sendFile(path.join(__dirname, '..', 'index.html')));
 router.get('/tech-trends',     (req, res) => res.sendFile(path.join(views, 'tech-trends.html')));
 router.get('/career-paths',    (req, res) => res.sendFile(path.join(views, 'career-paths.html')));

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Dashdark — AI & Tools</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <div class="sidebar" id="sidebar">
+
+        <h2 class="logo">Recrutador</h2>
+
+        <ul class="menu">
+            <li data-section="overview"        onclick="setActive(this); location.href='/recrutador'">
+                <i class="fa-solid fa-bars-staggered"></i> <span>Overview</span>
+            </li>
+            <li data-section="tech-trends"     onclick="setActive(this); location.href='/recrutador/tech-trends_Recrutador'">
+                <i class="fa-solid fa-arrow-trend-up"></i> <span>Tech Trends</span>
+            </li>
+            <li data-section="career-paths"    onclick="setActive(this); location.href='/recrutador/career-paths_Recrutador'">
+                <i class="fa-solid fa-briefcase"></i> <span>Career Paths</span>
+            </li>
+            <li data-section="ai-tools" class="active" onclick="setActive(this); location.href='/recrutador/ai-tools_Recrutador'">
+                <i class="fa-solid fa-robot"></i> <span>AI & Tools</span>
+            </li>
+            <li data-section="learning"        onclick="setActive(this); location.href='/recrutador/learning_Recrutador'">
+                <i class="fa-solid fa-graduation-cap"></i> <span>Learning</span>
+            </li>
+            <li data-section="salary-explorer" onclick="setActive(this); location.href='/recrutador/salary-explorer_Recrutador'">
+                <i class="fa-solid fa-dollar-sign"></i> <span>Salary Explorer</span>
+            </li>
+            <li data-section="demographics"    onclick="setActive(this); location.href='/recrutador/demographics_Recrutador'">
+                <i class="fa-solid fa-user-group"></i> <span>Demographics</span>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="main">
+
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="topbar-text">
+                <strong>Stack Overflow Developer Survey 2024</strong>
+                <span>Comprehensive analysis of 89,184 developer responses worldwide</span>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i id="themeIcon" class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+
+        <!-- Content aqui -->
+         <div class="content">
+
+            <header class="header">
+                <h2>AI & Tools</h2>
+                <div class="page-subtitle">Análise das ferramentas e tecnologias de IA globais entre desenvolvedores</div>
+            </header>
+
+        </div>
+
+    </div>
+
+    <script src="/js/script.js"></script>
+
+</body>
+</html>
