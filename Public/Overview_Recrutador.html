@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Dashboard_Recrutador</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
         <h2 class="logo">Recrutador</h2>
 
         <ul class="menu">
-            <li data-section="overview"        onclick="setActive(this); location.href='/recrutador'">
+            <li data-section="overview" class="active" onclick="setActive(this); location.href='/recrutador'">
                 <i class="fa-solid fa-bars-staggered"></i> <span>Overview</span>
             </li>
             <li data-section="tech-trends"     onclick="setActive(this); location.href='/recrutador/tech-trends_Recrutador'">
@@ -26,7 +26,7 @@
             <li data-section="career-paths"    onclick="setActive(this); location.href='/recrutador/career-paths_Recrutador'">
                 <i class="fa-solid fa-briefcase"></i> <span>Career Paths</span>
             </li>
-            <li data-section="ai-tools" class="active" onclick="setActive(this); location.href='/recrutador/ai-tools_Recrutador'">
+            <li data-section="ai-tools"        onclick="setActive(this); location.href='/recrutador/ai-tools_Recrutador'">
                 <i class="fa-solid fa-robot"></i> <span>AI & Tools</span>
             </li>
             <li data-section="learning"        onclick="setActive(this); location.href='/recrutador/learning_Recrutador'">
@@ -99,14 +99,14 @@
                 <!-- Grid 2 colunas -->
                 <div class="charts-grid">
                     <div class="chart-box">
-                        <h3>Distribuição Salarial por Geração</h3>
-                        <iframe src="assets/g1_seniority.html"
+                        <h3>Distribuição por Nível de Senioridade</h3>
+                        <iframe src="/assets/g1_seniority.html"
                             style="width:100%; height:420px; border:none; border-radius:12px;">
                         </iframe>
                     </div>
                     <div class="chart-box">
-                        <h3>Distribuição Salarial por Geração</h3>
-                        <iframe src="assets/g2_age.html"
+                        <h3>Distribuição por Faixa Etária</h3>
+                        <iframe src="/assets/g2_age.html"
                             style="width:100%; height:420px; border:none; border-radius:12px;">
                         </iframe>
                     </div>
@@ -114,50 +114,50 @@
 
                 <!-- Largura total -->
                 <div class="chart-box chart-box--wide">
-                    <h3>Distribuição Salarial por Geração</h3>
-                    <iframe src="assets/g3_salary_devtype.html"
+                    <h3>Salário Médio por Tipo de Developer</h3>
+                    <iframe src="/assets/g3_salary_devtype.html"
                         style="width:100%; height:450px; border:none; border-radius:12px;">
                     </iframe>
                 </div>
 
                 <div class="chart-box chart-box--wide">
-                    <h3>Distribuição Salarial por Geração</h3>
-                    <iframe src="assets/g4_salary_exp.html"
+                    <h3>Salário vs. Anos de Experiência</h3>
+                    <iframe src="/assets/g4_salary_exp.html"
                         style="width:100%; height:420px; border:none; border-radius:12px;">
                     </iframe>
                 </div>
 
                 <div class="chart-box chart-box--wide">
-                    <h3>Distribuição Salarial por Geração</h3>
-                    <iframe src="assets/g5_tools.html"
+                    <h3>Ferramentas de Desenvolvimento Mais Usadas</h3>
+                    <iframe src="/assets/g5_tools.html"
                         style="width:100%; height:450px; border:none; border-radius:12px;">
                     </iframe>
                 </div>
 
                 <div class="chart-box chart-box--wide">
-                    <h3>Distribuição Salarial por Geração</h3>
-                    <iframe src="assets/g6_remote.html"
+                    <h3>Modalidade de Trabalho (Remoto / Híbrido / Presencial)</h3>
+                    <iframe src="/assets/g6_remote.html"
                         style="width:100%; height:420px; border:none; border-radius:12px;">
                     </iframe>
                 </div>
 
                 <div class="chart-box chart-box--wide">
-                    <h3>Distribuição Salarial por Geração</h3>
-                    <iframe src="assets/g7_jobsat.html"
+                    <h3>Satisfação no Trabalho</h3>
+                    <iframe src="/assets/g7_jobsat.html"
                         style="width:100%; height:420px; border:none; border-radius:12px;">
                     </iframe>
                 </div>
 
                 <div class="chart-box chart-box--wide">
-                    <h3>Distribuição Salarial por Geração</h3>
-                    <iframe src="assets/g8_industries.html"
+                    <h3>Salário por Setor de Indústria</h3>
+                    <iframe src="/assets/g8_industries.html"
                         style="width:100%; height:450px; border:none; border-radius:12px;">
                     </iframe>
                 </div>
 
                 <div class="chart-box chart-box--wide">
-                    <h3>Distribuição Salarial por Geração</h3>
-                    <iframe src="assets/g9_map.html"
+                    <h3>Distribuição Geográfica Global de Developers</h3>
+                    <iframe src="/assets/g9_map.html"
                         style="width:100%; height:480px; border:none; border-radius:12px;">
                     </iframe>
                 </div>
@@ -167,7 +167,7 @@
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 
 </body>
 </html>
