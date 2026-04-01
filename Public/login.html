@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entrar</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #ffffff;
+      --ink: #111111;
+      --warm: #888888;
+      --warm-light: #f0f0f0;
+      --muted: #999999;
+      --border: #e0e0e0;
+      --error: #cc4444;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(0,0,0,0.02) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.01) 0%, transparent 50%);
+      overflow: hidden;
+    }
+
+    /* Decorative lines */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 79px,
+          rgba(0,0,0,0.03) 79px,
+          rgba(0,0,0,0.03) 80px
+        );
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 52px 48px 48px;
+      position: relative;
+      box-shadow:
+        0 1px 2px rgba(26,22,18,0.04),
+        0 8px 32px rgba(26,22,18,0.06),
+        0 32px 64px rgba(26,22,18,0.04);
+    }
+
+    /* Corner ornament */
+    .card::before, .card::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+    }
+    .card::before {
+      top: 12px; left: 12px;
+      border-top: 1px solid var(--warm);
+      border-left: 1px solid var(--warm);
+    }
+    .card::after {
+      bottom: 12px; right: 12px;
+      border-bottom: 1px solid var(--warm);
+      border-right: 1px solid var(--warm);
+    }
+
+    .logo-area {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-mark {
+      width: 44px; height: 44px;
+      margin: 0 auto 16px;
+      border: 1px solid var(--warm);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--warm);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: var(--warm);
+      margin: 14px auto 0;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.1s; }
+    .form-group:nth-child(2) { animation-delay: 0.18s; }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px; height: 15px;
+      color: var(--muted);
+      pointer-events: none;
+      transition: color 0.2s;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px 13px 40px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: #f7f7f7;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder { color: #b8b0a6; }
+
+    input:focus {
+      border-color: var(--warm);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.02);
+    }
+
+    input:focus + svg,
+    .input-wrap:focus-within svg {
+      color: var(--warm);
+    }
+
+    /* Reorder icon to after input for sibling selector */
+    .input-icon-after svg { display: none; }
+
+    .input-wrap:focus-within svg { color: var(--warm); }
+
+    .toggle-password {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .toggle-password:hover { color: var(--ink); }
+
+    .options-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      user-select: none;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 15px; height: 15px;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: #f7f7f7;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      position: relative;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .checkbox-label input[type="checkbox"]:checked {
+      background: var(--warm);
+      border-color: var(--warm);
+    }
+
+    .checkbox-label input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px; top: 1px;
+      width: 5px; height: 9px;
+      border: 1.5px solid #fff;
+      border-top: none; border-left: none;
+      transform: rotate(45deg);
+    }
+
+    .forgot-link {
+      font-size: 13px;
+      color: var(--warm);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .forgot-link:hover { color: var(--ink); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      border-radius: 2px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+    }
+
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+    }
+
+    .btn-submit:hover { background: #2e2822; transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .error-msg {
+      font-size: 12px;
+      color: var(--error);
+      margin-top: 6px;
+      display: none;
+      letter-spacing: 0.02em;
+    }
+
+    .error-msg.visible { display: block; }
+
+    input.invalid {
+      border-color: var(--error);
+      box-shadow: 0 0 0 3px rgba(184,92,74,0.10);
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+    }
+
+    .footer-text a {
+      color: var(--warm);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .footer-text a:hover { color: var(--ink); }
+
+    /* Success overlay */
+    .success-overlay {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .success-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .success-icon {
+      width: 52px; height: 52px;
+      border: 1px solid var(--warm);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--warm);
+      margin-bottom: 18px;
+    }
+    .success-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      color: var(--ink);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .success-sub {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="logo-area">
+        <h1>Bem-vindo</h1>
+        <p class="subtitle">Inicie sessão na sua conta</p>
+        <div class="divider"></div>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="email">Endereço de email</label>
+          <div class="input-wrap">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="exemplo@email.com"
+              autocomplete="email"
+            />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+          </div>
+          <p class="error-msg" id="emailError">Por favor, introduza um email válido.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Palavra-passe</label>
+          <div class="input-wrap">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="••••••"
+              autocomplete="current-password"
+            />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+
+          </div>
+          <p class="error-msg" id="passwordError">A palavra-passe deve ter pelo menos 6 caracteres.</p>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          Entrar
+        </button>
+      </form>
+
+      <!-- Success state -->
+      <div class="success-overlay" id="successOverlay">
+        <div class="success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="24" height="24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+        </div>
+        <p class="success-title">Sessão iniciada</p>
+        <p class="success-sub">Seja bem-vindo de volta.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const submitBtn = document.getElementById('submitBtn');
+    const successOverlay = document.getElementById('successOverlay');
+
+    // Live validation clear
+    emailInput.addEventListener('input', () => clearError(emailInput, emailError));
+    passwordInput.addEventListener('input', () => clearError(passwordInput, passwordError));
+
+    function clearError(input, errorEl) {
+      input.classList.remove('invalid');
+      errorEl.classList.remove('visible');
+    }
+
+    function showError(input, errorEl) {
+      input.classList.add('invalid');
+      errorEl.classList.add('visible');
+    }
+
+    function validateEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    const USERS = {
+      'recrutador@upt.pt': { password: '12345', dashboard:'Overview_recrutador.html' },
+      'developer@upt.pt':  { password: '12345', dashboard: 'index.html'  },
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      const email = emailInput.value.trim().toLowerCase();
+      const password = passwordInput.value;
+
+      if (!validateEmail(email)) {
+        showError(emailInput, emailError);
+        valid = false;
+      }
+      if (password.length < 1) {
+        showError(passwordInput, passwordError);
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'A entrar…';
+
+      await new Promise(r => setTimeout(r, 900));
+
+      const user = USERS[email];
+
+      if (!user || user.password !== password) {
+        // Wrong credentials
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Entrar';
+        showError(emailInput, emailError);
+        emailError.textContent = 'Email ou palavra-passe incorretos.';
+        showError(passwordInput, passwordError);
+        passwordError.textContent = ' ';
+        return;
+      }
+
+      // Correct — show success then redirect
+      successOverlay.classList.add('show');
+      await new Promise(r => setTimeout(r, 1200));
+      window.location.href = user.dashboard;
+    });
+  </script>
+</body>
+</html>

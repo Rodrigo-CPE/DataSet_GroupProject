@@ -1,4 +1,4 @@
-/* charts.css */
+/* charts.css /
 .charts {
     display: grid;
     grid-template-columns: 1fr;
@@ -6,12 +6,14 @@
     margin-bottom: 32px;
 }
 
-/* Full width chart section */
+
+
+/ Full width chart section /
 .charts-full {
     grid-template-columns: 1fr;
 }
 
-/* Grid layout for side-by-side charts */
+/ Grid layout for side-by-side charts /
 .charts-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -19,40 +21,40 @@
     margin-bottom: 0;
 }
 
-/* CONTENEDOR DE CHARTS */
+/ CONTENEDOR DE CHARTS /
 .charts-div {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 25px; /* espacio entre chart-box */
+    gap: 25px; / espacio entre chart-box /
     padding: 20px;
 }
 
 .chart-box .cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 por fila */
+    grid-template-columns: repeat(2, 1fr); / 2 por fila /
     gap: 15px;
     margin-top: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(580px, 1fr)); /* Ajuste automático */
-    gap: 25px;
 }
-/* CONTENEDOR DE CHARTS */
+
+/ CONTENEDOR DE CHARTS /
 .charts-div {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 25px; /* espacio entre chart-box */
+    gap: 25px; / espacio entre chart-box /
     padding: 20px;
 }
 
 .chart-box .cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 por fila */
+    grid-template-columns: repeat(2, 1fr); / 2 por fila /
     gap: 15px;
     margin-top: 15px;
 }
+
 
 .chart-box {
     background: linear-gradient(135deg, #0B1748, #131F5F);
-    padding: 16px 0 0 16px;
+    padding: 16px;
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     overflow: hidden;
@@ -65,12 +67,12 @@
 }
 
 .chart-box iframe {
-
-   width: 100%;
+    width: 100%;
     height: 100%;
     border: none;
     border-radius: 0;
-    display: block;    margin-right: -16px;
+    display: block;
+    margin-right: -16px;
     margin-bottom: -16px;
     background-color: transparent;
 }
@@ -81,24 +83,10 @@ canvas {
     display: block;
 }
 
-.chart-box iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 0;
-    display: block;
-}
-
-/* Responsive design */
+/ Responsive design */
 @media (max-width: 1200px) {
     .charts-grid {
         grid-template-columns: 1fr;
         gap: 24px;
     }
-        border-radius: 16px;
-}
-
-#box_1 {
-    grid-column: span 2; /* Ocupa ambas columnas */
-    height: 650px; /* Ajusta la altura según el contenido del gráfico */
 }
