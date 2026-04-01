@@ -11,4 +11,10 @@ app.use(express.static(path.join(__dirname)));
 app.use('/developer', dashboardRoutes);
 app.use('/recrutador', dashboardRecrutadorRoutes);
 
+// Rota do login
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+
 module.exports = app;

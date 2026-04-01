@@ -1,4 +1,4 @@
-/* charts.css /
+/* charts.css */
 .charts {
     display: grid;
     grid-template-columns: 1fr;
@@ -8,12 +8,12 @@
 
 
 
-/ Full width chart section /
+/* Full width chart section */
 .charts-full {
     grid-template-columns: 1fr;
 }
 
-/ Grid layout for side-by-side charts /
+/* Grid layout for side-by-side charts */
 .charts-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -21,32 +21,32 @@
     margin-bottom: 0;
 }
 
-/ CONTENEDOR DE CHARTS /
+/* CONTENEDOR DE CHARTS */
 .charts-div {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 25px; / espacio entre chart-box /
+    gap: 25px; /* espacio entre chart-box */
     padding: 20px;
 }
 
 .chart-box .cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); / 2 por fila /
+    grid-template-columns: repeat(2, 1fr); /* 2 por fila */
     gap: 15px;
     margin-top: 15px;
 }
 
-/ CONTENEDOR DE CHARTS /
+/* CONTENEDOR DE CHARTS */
 .charts-div {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 25px; / espacio entre chart-box /
+    gap: 25px; /* espacio entre chart-box */
     padding: 20px;
 }
 
 .chart-box .cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); / 2 por fila /
+    grid-template-columns: repeat(2, 1fr); /* 2 por fila */
     gap: 15px;
     margin-top: 15px;
 }
@@ -83,7 +83,7 @@ canvas {
     display: block;
 }
 
-/ Responsive design */
+/* Responsive design */
 @media (max-width: 1200px) {
     .charts-grid {
         grid-template-columns: 1fr;
