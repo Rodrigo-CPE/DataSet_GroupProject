@@ -82,3 +82,26 @@ body.light-mode .chart-box {
     background: var(--color-bg-card-light);
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+
+/* LIGHT MODE CARDS BASE */
+body.light-mode .card {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* POSITIVE */
+body.light-mode .card.positive {
+    background: #e6f4ea;
+    color: #1e7e34;
+}
+
+/* NEGATIVE */
+body.light-mode .card.negative {
+    background: #fde8e8;
+    color: #b91c1c;
+}
+
+/* NEUTRAL */
+body.light-mode .card.neutral {
+    background: #f2f2f2;
+    color: #555;
+}

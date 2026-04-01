@@ -39,3 +39,96 @@
     margin-top: 8px;
     opacity: 0.75;
 }
+
+
+
+
+/* tech_trends.html */
+/* GRID 2x2 RESPONSIVE */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* TARJETA BASE */
+.card {
+    padding: 20px;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+/* EFECTO HOVER */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* TOP (TÍTULO + ICONO) */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card h4 {
+    font-size: 18px;
+}
+
+.card h2 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* ESTADOS */
+.card.positive {
+    background: #e6f4ea;
+    color: #1e7e34;
+}
+
+.card.positive i {
+    color: #16a34a;
+}
+
+.card.negative {
+    background: #f8e6e6;
+    color: #b91c1c;
+}
+
+.card.negative i {
+    color: #dc2626;
+}
+
+.card.neutral {
+    background: #f0f0f0;
+    color: #555;
+}
+
+/* DARK MODE */
+body:not(.light-mode) .card.positive {
+    background: rgba(34,197,94,0.15);
+    color: #22c55e;
+}
+
+body:not(.light-mode) .card.negative {
+    background: rgba(239,68,68,0.15);
+    color: #ef4444;
+}
+
+body:not(.light-mode) .card.neutral {
+    background: rgba(255,255,255,0.05);
+    color: #ccc;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
