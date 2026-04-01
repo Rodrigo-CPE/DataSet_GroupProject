@@ -16,12 +16,18 @@ function setActive(el) {
     '/developer/salary-explorer': 'salary-explorer',
     '/developer/demographics': 'demographics',
   };
-  const activeSection = sectionMap[window.location.pathname]
-    || localStorage.getItem('activeSection')
-    || 'overview';
+  // Prioridade: URL atual > localStorage > 'overview'
+  const pathname = window.location.pathname;
+  const activeSection = sectionMap[pathname] !== undefined 
+    ? sectionMap[pathname]
+    : (localStorage.getItem('activeSection') || 'overview');
+  
   document.querySelectorAll('.sidebar ul.menu li').forEach(li => {
     li.classList.toggle('active', li.dataset.section === activeSection);
   });
+  
+  // Guardar no localStorage para persistência
+  localStorage.setItem('activeSection', activeSection);
 })();
 
 function toggleTheme() {

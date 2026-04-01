@@ -28,23 +28,7 @@
     font-size: 28px;
 }
 
-/* charts.css */
-.charts {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 25px;
-}
 
-.chart-box {
-    background: linear-gradient(135deg, #0B1748, #131F5F);
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: var(--shadow-card);
-}
-
-canvas {
-    max-height: 280px;
-}
 
 
 /* Usar na descrição dos cards */
