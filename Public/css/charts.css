@@ -32,7 +32,25 @@
     grid-template-columns: repeat(2, 1fr); /* 2 por fila */
     gap: 15px;
     margin-top: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(580px, 1fr)); /* Ajuste automático */
+    gap: 25px;
 }
+
+/* CONTENEDOR DE CHARTS */
+.charts-div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px; /* espacio entre chart-box */
+    padding: 20px;
+}
+
+.chart-box .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 por fila */
+    gap: 15px;
+    margin-top: 15px;
+}
+
 
 .chart-box {
     background: linear-gradient(135deg, #0B1748, #131F5F);
@@ -71,4 +89,10 @@ canvas {
         grid-template-columns: 1fr;
         gap: 24px;
     }
+    border-radius: 16px;
+}
+
+#box_1 {
+    grid-column: span 2; /* Ocupa ambas columnas */
+    height: 650px; /* Ajusta la altura según el contenido del gráfico */
 }
