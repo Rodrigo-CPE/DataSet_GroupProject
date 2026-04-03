@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome Free -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Dashboard_Developer</title>
     <link rel="stylesheet" href="/css/style.css">
-
 </head>
 <body>
-    <!-- SIDEBAR -->
-
 <div class="sidebar" id="sidebar">
-  <h2 class="logo">Developer</h2>
+  <h2 class="logo">Programador</h2>
   <ul class="menu">
     <li data-section="overview" onclick="setActive(this); location.href='/developer'"><i class="fa-solid fa-bars-staggered"></i> <span>Overview</span></li>
-    <li class = "active" data-section="tech-trends" onclick="setActive(this); location.href='/developer/tech-trends'"><i class="fa-solid fa-arrow-trend-up"></i> <span>Tech Trends</span></li>
+    <li class="active" data-section="tech-trends" onclick="setActive(this); location.href='/developer/tech-trends'"><i class="fa-solid fa-arrow-trend-up"></i> <span>Tech Trends</span></li>
     <li data-section="career-paths" onclick="setActive(this); location.href='/developer/career-paths'"><i class="fa-solid fa-briefcase"></i> <span>Career Paths</span></li>
     <li data-section="ai-tools" onclick="setActive(this); location.href='/developer/ai-tools'"><i class="fa-solid fa-robot"></i> <span>AI & Tools</span></li>
     <li data-section="learning" onclick="setActive(this); location.href='/developer/learning'"><i class="fa-solid fa-graduation-cap"></i> <span>Learning</span></li>
@@ -24,136 +20,45 @@
     <li data-section="demographics" onclick="setActive(this); location.href='/developer/demographics'"><i class="fa-solid fa-user-group"></i> <span>Demographics</span></li>
   </ul>
 </div>
-
-
-<!-- MAIN CONTENT -->
-
 <div class="main">
-<div class="topbar">
+  <div class="topbar">
     <div class="topbar-text">
-        <strong>Stack Overflow Developer Survey 2024</strong>
-        <span>Developer Analytics Dashboard</span>
+      <strong>Stack Overflow Developer Survey 2024</strong>
+      <span>Dashboard de Análise de Programadores</span>
     </div>
-
     <button class="theme-toggle" onclick="toggleTheme()">
-        <i id="themeIcon" class="fa-solid fa-moon"></i>
+      <i id="themeIcon" class="fa-solid fa-moon"></i>
     </button>
-</div>
-
-<div class="content">
-<header class="header">
-<h2>Analytics</h2>
-
-</header>
-
-<!-- CHARTS -->
-
-<section class="charts-div">
-
-    <div class="chart-box">
-        <h3>Technology Trends Analysis</h3>
-        <iframe src="/assets/boxplot_geracao.html" style="width:100%; height:400px; border:none; border-radius:16px;"></iframe>
-    </div>
-
-    <div class="chart-box">
-    <h3>Framework & Library Growth (YoY %)</h3>
-
-    <div class="cards-grid modern-cards">
-
-        <div class="card positive">
-            <div class="card-top">
-                <h4>React</h4>
-                <i class="fa-solid fa-arrow-trend-up"></i>
-            </div>
-            <h2>+8.5%</h2>
-            <p>40.6% users</p>
-        </div>
-
-        <div class="card positive">
-            <div class="card-top">
-                <h4>Node.js</h4>
-                <i class="fa-solid fa-arrow-trend-up"></i>
-            </div>
-            <h2>+4.2%</h2>
-            <p>42.7% users</p>
-        </div>
-
-        <div class="card positive">
-            <div class="card-top">
-                <h4>Next.js</h4>
-                <i class="fa-solid fa-arrow-trend-up"></i>
-            </div>
-            <h2>+18.3%</h2>
-            <p>16.7% users</p>
-        </div>
-
-        <div class="card negative">
-            <div class="card-top">
-                <h4>Vue.js</h4>
-                <i class="fa-solid fa-arrow-trend-down"></i>
-            </div>
-            <h2>-2.1%</h2>
-            <p>18.8% users</p>
-        </div>
-
-        <div class="card negative">
-            <div class="card-top">
-                <h4>Angular</h4>
-                <i class="fa-solid fa-arrow-trend-down"></i>
-            </div>
-            <h2>-5.4%</h2>
-            <p>17.5% users</p>
-        </div>
-
-        <div class="card positive">
-            <div class="card-top">
-                <h4>Svelte</h4>
-                <i class="fa-solid fa-arrow-trend-up"></i>
-            </div>
-            <h2>+12.7%</h2>
-            <p>7.8% users</p>
-        </div>
-
-        <div class="card neutral">
-            <div class="card-top">
-                <h4>Django</h4>
-                <i class="fa-solid fa-minus"></i>
-            </div>
-            <h2>+1.2%</h2>
-            <p>14.3% users</p>
-        </div>
-
-        <div class="card positive">
-            <div class="card-top">
-                <h4>FastAPI</h4>
-                <i class="fa-solid fa-arrow-trend-up"></i>
-            </div>
-            <h2>+24.5%</h2>
-            <p>11.2% users</p>
-        </div>
-
-    </div>
-</div>
-    <div class="chart-box">
-        <h3>Tech Stack Evolution: Traditional → Modern</h3>
-        <iframe src="/assets/tech_stack_sankey.html" style="width:100%; height:500px; border:none; border-radius:16px;"></iframe>
-    </div>
-    <div class="chart-box">
-        <h3>Tech Skills Shortage Index (Want vs Using)</h3>
-        <iframe src="/assets/skills_shortage_gauge.html" style="width:100%; height:500px; border:none; border-radius:16px;"></iframe>
-    </div>
-    <div class="chart-box">
-        <h3>Most Popular Tech Stack Combinations</h3>
+  </div>
+  <div class="content">
+    <header class="header">
+      <h2>Tendências Tecnológicas</h2>
+      <div class="page-subtitle">Padrões de adoção e crescimento tecnológico</div>
+    </header>
+    <section class="charts">
+      <div class="chart-box">
+        <h3>Caminho de progressão de habilidade: Linguagens → Funções de Desenvolvedor</h3>
+        <iframe src="/assets/skills_progression_sankey.html" style="width:100%; height:620px; border:none; border-radius:16px;"></iframe>
+      </div>
+      <div class="chart-box">
+        <h3>Combinações de Tecnologias Mais Populares</h3>
         <iframe src="/assets/tech_stack_combinations.html" style="width:100%; height:500px; border:none; border-radius:16px;"></iframe>
-    </div>
-    
-</section>
-            
-        </div>
-
-
+      </div>
+      <div class="chart-box">
+        <h3>Evolução da pilha tecnológica: Tradicional → Moderna</h3>
+        <iframe src="/assets/tech_stack_sankey.html" style="width:100%; height:500px; border:none; border-radius:16px;"></iframe>
+      </div>
+      <div class="chart-box">
+        <h3>Linguagens que os Programadores Usam vs. As que Querem Aprender</h3>
+        <iframe src="/assets/skill_demand_supply.html" style="width:100%; height:720px; border:none; border-radius:16px;"></iframe>
+      </div>
+      <div class="chart-box">
+        <h3>ROI Tecnológico: Que combinações de skills pagam mais</h3>
+        <iframe src="/assets/tech_stack_roi.html" style="width:100%; height:620px; border:none; border-radius:16px;"></iframe>
+      </div>
+    </section>
+  </div>
 </div>
-
 <script src="/js/script.js"></script>
 </body>
 </html>
