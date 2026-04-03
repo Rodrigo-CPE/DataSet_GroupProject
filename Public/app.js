@@ -7,14 +7,19 @@ const dashboardRecrutadorRoutes = require('./routes/dashboard_Recrutador');
 
 const app = express();
 
+// Rota raiz → redireciona para login
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
+
 app.use(express.static(path.join(__dirname)));
 app.use('/developer', dashboardRoutes);
 app.use('/recrutador', dashboardRecrutadorRoutes);
 
+
 // Rota do login
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'login.html'));
+  res.sendFile(path.join(__dirname, 'login.html'));
 });
-
 
 module.exports = app;
