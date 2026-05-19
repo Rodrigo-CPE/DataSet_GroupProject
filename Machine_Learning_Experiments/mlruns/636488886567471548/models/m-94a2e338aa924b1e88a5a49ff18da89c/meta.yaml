@@ -1,0 +1,10 @@
+artifact_location: file:c:/Users/luisr/OneDrive/Ambiente de Trabalho/DataSet_GroupProject/Machine_Learning_Experiments/mlruns/636488886567471548/models/m-94a2e338aa924b1e88a5a49ff18da89c/artifacts
+creation_timestamp: 1778800551380
+experiment_id: '636488886567471548'
+last_updated_timestamp: 1778800554878
+model_id: m-94a2e338aa924b1e88a5a49ff18da89c
+model_type: null
+name: model
+source_run_id: bef30ea4f80448bb9ae902bd7dbb6549
+status: 2
+status_message: null

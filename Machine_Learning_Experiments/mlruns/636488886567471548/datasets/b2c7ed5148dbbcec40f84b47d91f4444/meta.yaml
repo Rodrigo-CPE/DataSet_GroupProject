@@ -1,0 +1,9 @@
+digest: 52d16c61
+name: dataset
+profile: '{"num_rows": 16544, "num_elements": 49632}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "YearsCodePro_Num", "required":
+  true}, {"type": "double", "name": "WorkExp", "required": true}, {"type": "long",
+  "name": "Age_Code", "required": true}]}'
+source: '{"tags": {"mlflow.user": "luisr", "mlflow.source.name": "01_Linear_Regression.ipynb",
+  "mlflow.source.type": "NOTEBOOK"}}'
+source_type: code

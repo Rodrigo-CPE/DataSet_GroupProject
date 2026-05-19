@@ -1,0 +1,14 @@
+artifact_uri: file:c:/Users/luisr/OneDrive/Ambiente de Trabalho/DataSet_GroupProject/Machine_Learning_Experiments/mlruns/636488886567471548/6808093b320f434294a387394a1bc313/artifacts
+end_time: 1778800551047
+entry_point_name: ''
+experiment_id: '636488886567471548'
+lifecycle_stage: active
+run_id: 6808093b320f434294a387394a1bc313
+run_name: Experiment_7_Reduce_Dataset_Size
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778800546631
+status: 3
+tags: []
+user_id: luisr

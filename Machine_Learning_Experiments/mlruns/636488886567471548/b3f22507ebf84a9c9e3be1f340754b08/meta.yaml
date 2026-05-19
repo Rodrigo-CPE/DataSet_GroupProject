@@ -1,0 +1,14 @@
+artifact_uri: file:c:/Users/luisr/OneDrive/Ambiente de Trabalho/DataSet_GroupProject/Machine_Learning_Experiments/mlruns/636488886567471548/b3f22507ebf84a9c9e3be1f340754b08/artifacts
+end_time: 1778800531707
+entry_point_name: ''
+experiment_id: '636488886567471548'
+lifecycle_stage: active
+run_id: b3f22507ebf84a9c9e3be1f340754b08
+run_name: Experiment_3_Larger_Test_Set
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778800527647
+status: 3
+tags: []
+user_id: luisr

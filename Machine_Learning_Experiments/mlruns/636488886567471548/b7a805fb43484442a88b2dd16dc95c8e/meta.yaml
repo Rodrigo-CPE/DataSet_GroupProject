@@ -1,0 +1,14 @@
+artifact_uri: file:c:/Users/luisr/OneDrive/Ambiente de Trabalho/DataSet_GroupProject/Machine_Learning_Experiments/mlruns/636488886567471548/b7a805fb43484442a88b2dd16dc95c8e/artifacts
+end_time: 1778800546563
+entry_point_name: ''
+experiment_id: '636488886567471548'
+lifecycle_stage: active
+run_id: b7a805fb43484442a88b2dd16dc95c8e
+run_name: Experiment_6_Remove_Two_Features
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778800541023
+status: 3
+tags: []
+user_id: luisr

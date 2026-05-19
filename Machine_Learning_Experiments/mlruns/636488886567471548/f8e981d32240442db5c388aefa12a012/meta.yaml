@@ -1,0 +1,14 @@
+artifact_uri: file:c:/Users/luisr/OneDrive/Ambiente de Trabalho/DataSet_GroupProject/Machine_Learning_Experiments/mlruns/636488886567471548/f8e981d32240442db5c388aefa12a012/artifacts
+end_time: 1778800522348
+entry_point_name: ''
+experiment_id: '636488886567471548'
+lifecycle_stage: active
+run_id: f8e981d32240442db5c388aefa12a012
+run_name: Experiment_1_Baseline
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778800506123
+status: 3
+tags: []
+user_id: luisr
