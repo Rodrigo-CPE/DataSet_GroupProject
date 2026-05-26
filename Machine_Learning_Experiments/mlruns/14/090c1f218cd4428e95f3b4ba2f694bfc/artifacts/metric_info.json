@@ -1,0 +1,7 @@
+{
+  "StackingClassifier_score-2_X_test-2": "StackingClassifier.score(X=X_test, y=y_test)",
+  "StackingClassifier_score-3_X_test-3": "StackingClassifier.score(X=X_test, y=y_test)",
+  "StackingClassifier_score-4_X_test-4": "StackingClassifier.score(X=X_test, y=y_test)",
+  "StackingClassifier_score-5_X_test-5": "StackingClassifier.score(X=X_test, y=y_test)",
+  "StackingClassifier_score_X_test": "StackingClassifier.score(X=X_test, y=y_test)"
+}

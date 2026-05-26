@@ -1,0 +1,31 @@
+artifact_path: file:c:/Users/luisr/OneDrive/Ambiente de Trabalho/DataSet_GroupProject/Machine_Learning_Experiments/mlruns/1/models/m-b2be2967a1fa427a8433ed2576695b3c/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.2
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.10.1
+model_id: m-b2be2967a1fa427a8433ed2576695b3c
+model_size_bytes: 497
+model_uuid: m-b2be2967a1fa427a8433ed2576695b3c
+prompts: null
+run_id: 98462fb625794b24a454907cb65752c3
+signature:
+  inputs: '[{"type": "long", "name": "YearsCodePro_Num", "required": true}, {"type":
+    "double", "name": "WorkExp", "required": true}, {"type": "long", "name": "Age_Code",
+    "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-05-25 21:36:45.445608'

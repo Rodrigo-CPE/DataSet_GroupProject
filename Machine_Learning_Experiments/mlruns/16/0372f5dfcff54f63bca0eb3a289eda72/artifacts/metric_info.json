@@ -1,0 +1,7 @@
+{
+  "MLPClassifier_score-2_X_test-2": "MLPClassifier.score(X=X_test, y=y_test)",
+  "MLPClassifier_score-3_X_test-3": "MLPClassifier.score(X=X_test, y=y_test)",
+  "MLPClassifier_score-4_X_test-4": "MLPClassifier.score(X=X_test, y=y_test)",
+  "MLPClassifier_score-5_X_test-5": "MLPClassifier.score(X=X_test, y=y_test)",
+  "MLPClassifier_score_X_test": "MLPClassifier.score(X=X_test, y=y_test)"
+}
